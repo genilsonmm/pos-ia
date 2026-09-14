@@ -1,0 +1,8 @@
+Modelos de machine learning free (imagem, vídeo e audio)
+https://teachablemachine.withgoogle.com/
+
+Biblioteca para machine learning (ml5.js)
+https://docs.ml5js.org/#/
+
+Base de dados para treinamento e teste para IA
+https://www.kaggle.com/

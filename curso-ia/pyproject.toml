@@ -4,18 +4,17 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "genilson.martins", email = "genilson.martins@virtus.ufcg.edu.br" }
+    { name = "Genilson Medeiros", email = "genisnilson@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
     "ipykernel>=7.3.0",
     "nltk>=3.10.3",
-    "scikit-learn>=1.9.1",
-]
+    "scikit-learn>=1.9.1",]
 
 [project.scripts]
 curso-ia = "curso_ia:main"
 
 [build-system]
-requires = ["uv_build>=0.12.13,<0.13.0"]
+requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"

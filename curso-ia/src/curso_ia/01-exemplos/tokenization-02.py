@@ -1,4 +1,4 @@
-import nltk 
+import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -16,27 +16,32 @@ documents = [
     "Mais do que encontrar padrões, o machine learning ajuda a tomar decisões baseadas em evidências.",
 ]
 
+
 def preprocess(text):
     # Convert to lowercase
-    text_lower = text.lower()  
+    text_lower = text.lower()
     # Tokenize the text into words
-    toknes = nltk.word_tokenize(text_lower)  
+    toknes = nltk.word_tokenize(text_lower)
     # isalnum() só mantém os elementos que são alfanuméricos (ou seja, compostos apenas por letras e/ou números, sem pontuação
-    return [word for word in toknes if word.isalnum()]  
+    return [word for word in toknes if word.isalnum()]
 
-preprocessed_documents = [' '.join(preprocess(doc)) for doc in documents]
+
+preprocessed_documents = [" ".join(preprocess(doc)) for doc in documents]
 print(preprocessed_documents)
 
-#TF (Term Frequency) → Frequência da palavra no documento.
-#IDF (Inverse Document Frequency) → Frequência inversa nos documentos.
+# TF (Term Frequency) → Frequência da palavra no documento.
+# IDF (Inverse Document Frequency) → Frequência inversa nos documentos.
 # Mede quão raro é o termo em um conjunto de textos.
 vectorizer = TfidfVectorizer()
 tfidf_matrix = vectorizer.fit_transform(preprocessed_documents)
 
-print("TF-IDF Matrix: 11, 106 (11 documentos, 106 palavras únicas, dimensões da matriz)")
+print(
+    "TF-IDF Matrix: 11, 106 (11 documentos, 106 palavras únicas, dimensões da matriz)"
+)
 print(tfidf_matrix)
 
 query = "machine learning"
+
 
 def search_tfidf(query, vectorizer, tfidf_matrix):
     query_vector = vectorizer.transform([query])
@@ -45,6 +50,7 @@ def search_tfidf(query, vectorizer, tfidf_matrix):
     sorted_similarities = list(enumerate(similarities))
     results = sorted(sorted_similarities, key=lambda x: x[1], reverse=True)
     return results
+
 
 search_similarities = search_tfidf(query, vectorizer, tfidf_matrix)
 print(f"Top 10 documentos por score de similaridade: {query}:")
